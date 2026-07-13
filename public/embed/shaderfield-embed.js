@@ -884,29 +884,31 @@ vec3 applyRepeat(vec3 p) {
 float map(vec3 p) {
   p = applyRepeat(p);
 
-  float m = clamp(u_mix, 0.0, 1.0);
+  // Mix only blends the Twist amount in — Rounding/Extrude/Variation are independent sliders
+  // that always take full effect on their own, so one doesn't silently disable the others.
+  float twistMix = clamp(u_mix, 0.0, 1.0);
   vec3 tp = p / max(u_scale3d, 0.05);
 
   // twist: rotate around Y by an amount proportional to height, plus a secondary X-axis twist
-  float twistAmtY = u_twist.x * m * 3.0;
+  float twistAmtY = u_twist.x * twistMix * 3.0;
   float ang = tp.y * twistAmtY;
   float ca = cos(ang), sa = sin(ang);
   tp.xz = mat2(ca, -sa, sa, ca) * tp.xz;
-  float twistAmtX = u_twist.y * m * 3.0;
+  float twistAmtX = u_twist.y * twistMix * 3.0;
   float angX = tp.x * twistAmtX;
   float cax = cos(angX), sax = sin(angX);
   tp.yz = mat2(cax, -sax, sax, cax) * tp.yz;
 
   // extrude: stretch along Z for ordinary primitives (custom primitive uses u_extrude for height instead)
-  if (u_primitive != 22) tp.z /= mix(1.0, 1.0 + u_extrude * 1.5, m);
+  if (u_primitive != 22) tp.z /= 1.0 + u_extrude * 1.5;
 
   // Rounding is subtracted in local (pre-scale) space so the fillet radius stays proportional
   // to the primitive's own size regardless of the Scale slider, instead of a fixed world-space amount.
-  float d = evalPrimitive(tp) - u_rounding * m * 0.25;
+  float d = evalPrimitive(tp) - u_rounding * 0.25;
   d *= max(u_scale3d, 0.05);
 
   if (u_variation > 0.0001) {
-    d += (noise3(p * 6.0) - 0.5) * u_variation * m * 0.18;
+    d += (noise3(p * 6.0) - 0.5) * u_variation * 0.18;
   }
 
   return d;
