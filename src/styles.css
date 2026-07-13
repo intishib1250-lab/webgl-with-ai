@@ -1,0 +1,166 @@
+@import "tailwindcss";
+@source ".";
+@import "tw-animate-css";
+@import "@fontsource-variable/inter";
+@import "shadcn/tailwind.css";
+
+@theme {
+  --font-sans: "Inter Variable", sans-serif;
+  --font-mono:
+    ui-monospace, "SFMono-Regular", "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  --text-2xs: 0.6875rem;
+  --text-2xs--line-height: 0.875rem;
+  --text-xs-plus: 0.8125rem;
+  --text-xs-plus--line-height: 1.125rem;
+  --spacing-control: 0.3125rem;
+  --radius-xs: 0.125rem;
+}
+
+@custom-variant focus-visible (&:is([data-focus-visible-mode="keyboard"] *):focus-visible);
+
+:root {
+  /* Neutral chrome — quiet, dense, dark. The canvas is the star. */
+  --surface-0: #0b0b0c;
+  --surface-1: #131315;
+  --surface-2: #19191c;
+  --surface-3: #212124;
+  --surface-border: #2a2a2e;
+  --surface-border-strong: #38383e;
+
+  --text-primary: #ededf0;
+  --text-secondary: #a3a3ab;
+  --text-tertiary: #6c6c74;
+
+  /* Brand color. Named "brand" (not "accent") to avoid colliding with
+     shadcn's own --accent token, which means something different (subtle
+     hover highlight). */
+  --brand: #007aff;
+  --brand-strong: #3396ff;
+  --brand-muted: #0d2a4d;
+  --brand-foreground: #ffffff;
+
+  --danger: #f24141;
+  --success: #3ecf7e;
+
+  --focus-ring: color-mix(in oklab, var(--brand) 60%, transparent);
+
+  color-scheme: dark;
+
+  /* shadcn semantic tokens, mapped onto our theme above. Single dark theme
+     only — no .dark class toggle needed since this app has no light mode. */
+  --background: var(--surface-0);
+  --foreground: var(--text-primary);
+  --card: var(--surface-1);
+  --card-foreground: var(--text-primary);
+  --popover: var(--surface-2);
+  --popover-foreground: var(--text-primary);
+  --primary: var(--brand);
+  --primary-foreground: var(--brand-foreground);
+  --secondary: var(--surface-3);
+  --secondary-foreground: var(--text-primary);
+  --muted: var(--surface-2);
+  --muted-foreground: var(--text-secondary);
+  --accent: var(--surface-3);
+  --accent-foreground: var(--text-primary);
+  --destructive: var(--danger);
+  --border: var(--surface-border);
+  --input: var(--surface-border);
+  --ring: var(--brand);
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    border-color: var(--surface-border);
+    outline-color: var(--focus-ring);
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    font-family: var(--font-sans);
+    @apply font-sans;
+  }
+
+  body {
+    background-color: var(--surface-0);
+    color: var(--text-primary);
+    font-optical-sizing: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    @apply bg-background text-foreground;
+  }
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  height: 100%;
+  min-height: 100%;
+  overflow: clip;
+}
+
+input,
+button,
+select,
+textarea {
+  font-family: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ui-motion {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in oklab, var(--text-primary) 12%, transparent) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+*::-webkit-scrollbar-track,
+*::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background-color: color-mix(in oklab, var(--text-primary) 12%, transparent);
+  background-clip: padding-box;
+}
+
+@theme inline {
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
