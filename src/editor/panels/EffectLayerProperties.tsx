@@ -28,7 +28,7 @@ export function EffectLayerProperties({ layer }: { layer: EffectLayer }) {
       <Section title="Effect layer">
         <Field label="Name">
           <input
-            className="w-36 rounded-sm border border-input bg-[var(--surface-1)] px-1.5 py-1 text-2xs-plus text-foreground outline-none focus-visible:border-[var(--brand)]"
+            className="w-36 rounded-full bg-[var(--surface-2)] px-3 py-1.5 text-2xs-plus text-foreground outline-none focus-visible:ring-1 focus-visible:ring-[var(--brand)]"
             value={layer.name}
             onChange={(e) => renameLayer(layer.id, e.target.value)}
           />

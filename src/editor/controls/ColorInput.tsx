@@ -15,7 +15,7 @@ export function ColorInput({ value, onChange, onCommit }: ColorInputProps) {
   return (
     <div className="flex items-center gap-1.5">
       <label
-        className="relative h-5 w-5 shrink-0 cursor-pointer overflow-hidden rounded-sm border border-[var(--surface-border-strong)]"
+        className="relative h-5 w-5 shrink-0 cursor-pointer overflow-hidden rounded-md border border-[var(--surface-border-strong)]"
         style={{
           backgroundImage:
             "linear-gradient(45deg, #3a3a3e 25%, transparent 25%), linear-gradient(-45deg, #3a3a3e 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #3a3a3e 75%), linear-gradient(-45deg, transparent 75%, #3a3a3e 75%)",
@@ -33,7 +33,7 @@ export function ColorInput({ value, onChange, onCommit }: ColorInputProps) {
         />
       </label>
       <input
-        className="w-16 rounded-sm border border-[var(--surface-border)] bg-[var(--surface-1)] px-1 py-0.5 text-2xs-plus tabular-nums text-[var(--text-primary)] outline-none"
+        className="h-6 w-16 rounded-full bg-[var(--surface-2)] px-2.5 text-2xs-plus tabular-nums text-[var(--text-primary)] outline-none"
         value={rgbHex}
         onChange={(e) => onChange(hexWithAlpha(e.target.value, a), false)}
         onBlur={() => onCommit?.()}

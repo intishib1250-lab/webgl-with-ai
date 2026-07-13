@@ -32,13 +32,13 @@ export function EffectsStack({ targetId, effects }: { targetId: string; effects:
 
   return (
     <div>
-      <div className="mb-2 flex items-center justify-between">
-        <h3 className="text-2xs-plus font-medium uppercase tracking-wide text-[var(--text-tertiary)]">Effects</h3>
+      <div className="mb-2.5 flex items-center justify-between">
+        <h3 className="text-xs-plus font-semibold text-[var(--text-primary)]">Effects</h3>
         <AddEffectPicker onPick={(effectId) => addEffect(targetId, effectId)} />
       </div>
 
       {effects.length === 0 && (
-        <p className="rounded-md border border-dashed border-[var(--surface-border)] px-2.5 py-3 text-center text-2xs-plus text-[var(--text-tertiary)]">
+        <p className="rounded-xl bg-[var(--surface-2)]/60 px-2.5 py-3 text-center text-2xs-plus text-[var(--text-tertiary)]">
           No effects yet
         </p>
       )}
@@ -80,7 +80,7 @@ function EffectRow({ targetId, instance }: { targetId: string; instance: EffectI
       ref={setNodeRef}
       style={{ transform: CSS.Transform.toString(transform), transition }}
       className={cn(
-        "rounded-md border border-[var(--surface-border)] bg-[var(--surface-1)]",
+        "rounded-xl bg-[var(--surface-2)]",
         isDragging && "opacity-60",
         !instance.enabled && "opacity-50",
       )}

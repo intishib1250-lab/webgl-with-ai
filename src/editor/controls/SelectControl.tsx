@@ -10,7 +10,7 @@ interface SelectControlProps {
 export function SelectControl({ value, options, onChange }: SelectControlProps) {
   return (
     <Select value={value} onValueChange={onChange}>
-      <SelectTrigger size="sm" className="w-28 text-2xs-plus">
+      <SelectTrigger size="sm" className="w-28 rounded-full bg-[var(--surface-2)] text-2xs-plus">
         <SelectValue />
       </SelectTrigger>
       <SelectContent>
@@ -35,14 +35,18 @@ export function SegmentedControl({ value, options, onChange }: SegmentedControlP
     <ToggleGroup
       type="single"
       size="sm"
-      variant="outline"
       value={value}
       onValueChange={(next) => {
         if (next) onChange(next);
       }}
+      className="rounded-full bg-[var(--surface-2)] p-0.5"
     >
       {options.map((option) => (
-        <ToggleGroupItem key={option.value} value={option.value} className="px-2 text-2xs-plus">
+        <ToggleGroupItem
+          key={option.value}
+          value={option.value}
+          className="rounded-full px-2.5 text-2xs-plus font-medium text-[var(--text-secondary)] data-[state=on]:bg-[var(--brand)] data-[state=on]:text-white"
+        >
           {option.label}
         </ToggleGroupItem>
       ))}

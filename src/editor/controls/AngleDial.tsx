@@ -51,7 +51,7 @@ export function AngleDial({ value, onChange, onCommit }: AngleDialProps) {
     <div className="flex items-center gap-1.5">
       <div
         ref={dialRef}
-        className="relative h-5 w-5 shrink-0 cursor-pointer rounded-full border border-[var(--surface-border-strong)] bg-[var(--surface-1)]"
+        className="relative h-6 w-6 shrink-0 cursor-pointer rounded-full bg-[var(--surface-2)]"
         onPointerDown={onPointerDown}
         onPointerMove={onPointerMove}
         onPointerUp={onPointerUp}
@@ -63,7 +63,7 @@ export function AngleDial({ value, onChange, onCommit }: AngleDialProps) {
         <span className="sr-only">{Math.round(value)} degrees</span>
       </div>
       <input
-        className="w-11 rounded-sm border border-[var(--surface-border)] bg-[var(--surface-1)] px-1 py-0.5 text-2xs-plus tabular-nums text-[var(--text-primary)] outline-none"
+        className="h-6 w-12 rounded-full bg-[var(--surface-2)] px-2.5 text-2xs-plus tabular-nums text-[var(--text-primary)] outline-none"
         value={text}
         onChange={(e) => setText(e.target.value)}
         onFocus={(e) => e.currentTarget.select()}

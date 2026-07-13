@@ -20,24 +20,28 @@
 
 :root {
   /* Neutral chrome — quiet, dense, dark. The canvas is the star. */
-  --surface-0: #0b0b0c;
-  --surface-1: #131315;
-  --surface-2: #19191c;
-  --surface-3: #212124;
-  --surface-border: #2a2a2e;
-  --surface-border-strong: #38383e;
+  --surface-0: #0e0e10;
+  --surface-1: #1c1c1f;
+  --surface-2: #29292d;
+  --surface-3: #38383e;
+  --surface-border: #313136;
+  --surface-border-strong: #45454c;
 
-  --text-primary: #ededf0;
-  --text-secondary: #a3a3ab;
-  --text-tertiary: #6c6c74;
+  --text-primary: #f5f5f7;
+  --text-secondary: #98989f;
+  --text-tertiary: #6e6e76;
 
   /* Brand color. Named "brand" (not "accent") to avoid colliding with
      shadcn's own --accent token, which means something different (subtle
      hover highlight). */
-  --brand: #007aff;
-  --brand-strong: #3396ff;
-  --brand-muted: #0d2a4d;
+  --brand: #3572ef;
+  --brand-strong: #5a8ffc;
+  --brand-muted: #14274d;
   --brand-foreground: #ffffff;
+
+  /* Accent used to distinguish axis/dimension prefixes (X/Y/Z/W/H) inside
+     compact multi-input fields, matching the reference design's indigo tag. */
+  --axis-accent: #9d9dff;
 
   --danger: #f24141;
   --success: #3ecf7e;

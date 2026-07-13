@@ -1,4 +1,5 @@
 import { AngleDial } from "@/editor/controls/AngleDial";
+import { PairField } from "@/editor/controls/CompactField";
 import { Field, Section } from "@/editor/controls/Field";
 import { SegmentedControl, SelectControl } from "@/editor/controls/SelectControl";
 import { SliderControl } from "@/editor/controls/SliderControl";
@@ -24,7 +25,7 @@ export function LayerProperties({ layer }: { layer: ContentLayer }) {
       <Section title="Layer">
         <Field label="Name">
           <input
-            className="w-36 rounded-sm border border-[var(--surface-border)] bg-[var(--surface-1)] px-1.5 py-1 text-2xs-plus text-[var(--text-primary)] outline-none focus-visible:border-[var(--brand)]"
+            className="w-36 rounded-full bg-[var(--surface-2)] px-3 py-1.5 text-2xs-plus text-[var(--text-primary)] outline-none focus-visible:ring-1 focus-visible:ring-[var(--brand)]"
             value={layer.name}
             onChange={(e) => renameLayer(layer.id, e.target.value)}
           />
@@ -45,26 +46,14 @@ export function LayerProperties({ layer }: { layer: ContentLayer }) {
       </Section>
 
       <Section title="Transform">
-        <Field label="Position X">
-          <SliderControl
-            value={layer.transform.x}
-            min={-2000}
-            max={4000}
-            step={1}
-            onChange={(x) => updateLayerTransform(layer.id, { x }, true)}
-            onCommit={commitHistory}
-          />
-        </Field>
-        <Field label="Position Y">
-          <SliderControl
-            value={layer.transform.y}
-            min={-2000}
-            max={4000}
-            step={1}
-            onChange={(y) => updateLayerTransform(layer.id, { y }, true)}
-            onCommit={commitHistory}
-          />
-        </Field>
+        <PairField
+          label="Position"
+          a={{ label: "X", value: layer.transform.x, onChange: (x) => updateLayerTransform(layer.id, { x }, true) }}
+          b={{ label: "Y", value: layer.transform.y, onChange: (y) => updateLayerTransform(layer.id, { y }, true) }}
+          onCommit={commitHistory}
+          min={-2000}
+          max={4000}
+        />
         <Field label="Scale">
           <SliderControl
             value={layer.transform.scale}
@@ -138,7 +127,7 @@ export function LayerProperties({ layer }: { layer: ContentLayer }) {
             />
           </Field>
           <textarea
-            className="mt-2 w-full resize-none rounded-sm border border-[var(--surface-border)] bg-[var(--surface-1)] px-2 py-1.5 text-2xs-plus text-[var(--text-primary)] outline-none focus-visible:border-[var(--brand)]"
+            className="mt-2 w-full resize-none rounded-xl bg-[var(--surface-2)] px-2.5 py-2 text-2xs-plus text-[var(--text-primary)] outline-none focus-visible:ring-1 focus-visible:ring-[var(--brand)]"
             rows={2}
             value={layer.content}
             onChange={(e) => updateLayer(layer.id, (l) => ({ ...l, content: e.target.value }))}

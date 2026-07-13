@@ -46,7 +46,7 @@ export function SliderControl({ value, min, max, step, suffix, clampMin, clampMa
         onValueCommit={() => onCommit?.()}
         className="flex-1"
       />
-      <div className="flex w-14 items-center rounded-sm border border-input bg-[var(--surface-1)] px-1">
+      <div className="flex h-6 w-14 items-center rounded-full bg-[var(--surface-2)] px-2.5">
         <input
           className="w-full cursor-ew-resize bg-transparent text-right text-2xs-plus tabular-nums text-foreground outline-none"
           value={text}
